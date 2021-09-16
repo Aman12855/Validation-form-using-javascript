@@ -1,0 +1,187 @@
+<html>
+<head>
+<title> Registration Form</title>
+
+</head>
+<script>
+function validateForm() {
+    
+    var pw1 = document.getElementById("pswd1").value;
+    var pw2 = document.getElementById("pswd2").value;
+    var name1 = document.getElementById("fname").value;
+	var name2 = document.getElementById("lname").value;
+    
+    
+    if(name1 == "") {
+      document.getElementById("blankMsg").innerHTML = "**Fill the first name";
+      return false;
+    }
+    
+    
+    if(!isNaN(name1)){
+      document.getElementById("blankMsg").innerHTML = "**Only characters are allowed";
+      return false;
+    }
+
+   
+    if(!isNaN(name2)){
+      document.getElementById("charMsg").innerHTML = "**Only characters are allowed";
+      return false;
+    } 
+  
+    
+    if(pw1 == "") {
+      document.getElementById("message1").innerHTML = "**Fill the password please!";
+      return false;
+    }
+  
+    
+    if(pw2 == "") {
+      document.getElementById("message2").innerHTML = "**Enter the password please!";
+      return false;
+    } 
+   
+    
+    if(pw1.length < 8) {
+      document.getElementById("message1").innerHTML = "**Password length must be atleast 8 characters";
+      return false;
+    }
+
+    
+    if(pw1.length > 15) {
+      document.getElementById("message1").innerHTML = "**Password length must not exceed 15 characters";
+      return false;
+    }
+  
+    if(pw1 != pw2) {
+      document.getElementById("message2").innerHTML = "**Passwords are not same";
+      return false;
+    } else {
+      alert ("Your password created successfully");
+      document.write("JavaScript form has been submitted successfully");
+    }
+ }
+
+  function ageCalculator() {
+      var userinput = document.getElementById("DOB").value;
+      var dob = new Date(userinput);
+      if(userinput==null || userinput=='') {
+        document.getElementById("message").innerHTML = "**Choose a date please!";  
+        return false; 
+      } else {
+      
+      
+      var month_diff = Date.now() - dob.getTime();
+      
+      
+      var age_dt = new Date(month_diff); 
+      
+        
+      var year = age_dt.getUTCFullYear();
+      
+      
+      var age = Math.abs(year - 1970);
+      
+    
+  
+       if(age<18){
+           window.alert("Your age is less than 18 ");
+       }
+      }
+  }
+  </script>
+
+<body>
+
+  
+<h1 style="color:green">Registration Form</h1>
+
+<form onsubmit ="return validateForm()">
+
+
+<td> First Name </td>
+<input type = "text" id = "fname" value = ""> 
+<span id = "blankMsg" style="color:red"> </span> <br><br>
+
+
+<td> Last Name </td>
+<input type = "text" id = "lname" value = ""> 
+<span id = "charMsg" style="color:red"> </span> <br><br>
+
+
+
+  <td>Email Id</td>
+  <td><input type="text" name="email" maxlength="50"/></td>
+  <span id="message3" style="color:red"> </span> <br><br>
+
+  <td>Phone</td>
+  <td><input type="text" name="phone" maxlength="12"/></td>
+  <span id="message4" style="color:red"> </span> <br><br>
+
+
+
+  <td>Gender</td>
+  <td> Male<input type="radio" name="gender" value="male"/>
+      Female<input type="radio" name="gender" value="female"/>
+  </td>
+  <span id="message5" style="color:red"> </span> <br><br>
+
+
+
+  <td>Address</td>
+  <td><textarea name="address" cols="30"></textarea></td>
+  <span id="message6" style="color:red"> </span> <br><br>
+
+
+  <td>State</td>
+
+  <td>
+
+      <select id=”state” name=”state”>
+
+  <option value=”Select a state”>Select a state</option>
+
+  <option value=”assam”>Assam</option>
+
+  <option value=”manipur”>Manipur</option>
+
+  <option value=”delhi”>Delhi</option>
+
+  <option value=”kolkata”>Kolkata</option>
+
+  </select>
+
+  </td>
+  <span id="message3" style="color:red"> </span> <br><br>
+
+  
+<b>Date of Birth: <input type=date id = DOB> </b>
+<span id = "message" style="color:red"> </span> <br><br>  
+
+
+<button type="submit" onclick = "ageCalculator()"> Calculate age </button> <br><br>
+<h3 style="color:32A80F" id="result" align="center"></h3> 
+
+
+
+<td>Password </td>
+<input type = "password" id = "pswd1" value = ""> 
+<span id = "message1" style="color:red"> </span> <br><br>
+
+
+<td> Confirm Password </td>
+<input type = "password" id = "pswd2" value = ""> 
+<span id = "message2" style="color:red"> </span> <br><br>
+
+
+
+
+<input type = "submit" value = "Submit">
+
+
+
+</form>
+</body>
+</html>
+
+ 
